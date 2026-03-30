@@ -1,7 +1,17 @@
-# DockMon-VPN
-- `Portainer "MGMT Container"`
-- `Docker Controller Bot "MGMT Container Bot Telegram"`
-- `Tailscale VPN "Server VPN"`
+🧠 Docker DNS Stack (Technitium + Portainer + Bot)
+
+Infraestructura ligera y potente para gestión de contenedores, DNS centralizado y monitoreo, lista para entornos de laboratorio, Homelab o producción ligera.
+
+🚀 Características
+
+🚀 Características
+🌐 Servidor DNS local con Technitium
+🛠️ Administración visual con Portainer
+🤖 Bot de Telegram para monitoreo de contenedores
+🔒 Buenas prácticas de seguridad (no-new-privileges)
+📦 Persistencia de datos
+🔗 Integración con VPN (Tailscale-ready)
+
     
 Este proyecto esta diseñado con la finalidad de utilizarse en una red domestica, utilizando una Raspberry Pi B 8GB con dispositivo, donde contamos con la configuracion de dos servicios de administracion de contenedores de docker como Portainer y Docker Controller.
 
