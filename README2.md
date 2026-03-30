@@ -59,22 +59,24 @@ docker run hello-world
 ```
 ![image](https://github.com/TecnologyCASM/PiHoleUnbound-WG/assets/107158068/58f35f2b-9c35-4381-8186-8f37298e170a)
 
-### 2. Crear archivo `.env`
-
-```bash
-cp .env.example .env
-nano .env
+# Descarga y Ejecucion del proyecto DockMon-Stack:
+1) Ejecutar el siguiente comando para solo descargar el proyecto `DockMon-Stack` y acceder a la carpeta del proyecto:
+```shell
+git clone https://github.com/TecnologyCASM/DockMon-Stack.git
+cd DockMon-Stack
+ls -la
+```
+2) Debe de ir al archivo `.env` y modificar los siguientes parametros:
+```shell
+# Variables de entorno para Docker Controller Bot
+BOT_TOKEN="Mi Token"
+CHAT_ID="Mi ID"
+```
+3) Luego de trabajar en el paso #2, solo resta ejecutar el siguiente comando:
+```shell
+docker compose up -d && docker ps
 ```
 
----
-
-### 3. Levantar servicios
-
-```bash
-docker compose up -d
-```
-
----
 
 ## 🌐 Accesos
 
