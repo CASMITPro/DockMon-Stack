@@ -17,11 +17,12 @@ Infraestructura ligera y potente para gestión de contenedores, DNS centralizado
 
 ## 🧱 Servicios incluidos
 
-| Servicio       | Descripción                       |
-| -------------- | --------------------------------- |
-| Portainer      | Panel web para administrar Docker |
-| Technitium DNS | Servidor DNS local avanzado       |
-| Controller Bot | Bot de Telegram para monitoreo    |
+| Servicio       | Descripción                           |
+| -------------- | ------------------------------------- |
+| Portainer      | Panel web para administrar Docker     |
+| Technitium DNS | Servidor DNS local avanzado           |
+| Controller Bot | Bot de Telegram para monitoreo        |
+| Tailscale      | VPN Mesh instalada vía script externo |
 
 ---
 
