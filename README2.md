@@ -36,14 +36,28 @@ Infraestructura ligera y potente para gestión de contenedores, DNS centralizado
 
 ## ⚙️ Instalación
 
-### 1. Clonar repositorio
-
-```bash
-git clone https://github.com/tuusuario/docker-dns-stack.git
-cd docker-dns-stack
+# Proceso Actualiacion OS, Instalacion de Docker y agregar usuario a grupo docker: 
+1) Una vez la raspberry pi halla iniciado, procederemos a aplicar los siguientes comandos:
+      - Actualiazar la lista de repositorios, Sistema Operativo, instalar dependencias, docker, agregar el usuario al grupo docker y reiniciar el equipo:
+  ```shell
+sudo apt update && sudo apt-get full-upgrade -y \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common \
+     vim \
+     fail2ban \
+     ntfs-3g &&
+sudo curl -fsSL https://get.docker.com/ -o get-docker.sh && sudo sh get-docker.sh &&
+sudo usermod -aG docker ${USER} && sudo rm -r get-docker.sh &&
+sudo reboot
 ```
-
----
+2) Una vez la raspberry pi halla iniciado y para validar que el servicio de docker esta instalado, procederemos a descargar un contenedor de prueba llamado `Helo-Wold`:
+```shell
+docker run hello-world
+```
+![image](https://github.com/TecnologyCASM/PiHoleUnbound-WG/assets/107158068/58f35f2b-9c35-4381-8186-8f37298e170a)
 
 ### 2. Crear archivo `.env`
 
