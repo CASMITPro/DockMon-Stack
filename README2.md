@@ -36,7 +36,7 @@ Infraestructura ligera y potente para gestión de contenedores, DNS centralizado
 
 ## ⚙️ Instalación
 
-# Proceso Actualiacion OS, Instalacion de Docker y agregar usuario a grupo docker: 
+### Proceso Actualiacion OS, Instalacion de Docker y agregar usuario a grupo docker: 
 1) Una vez la raspberry pi halla iniciado, procederemos a aplicar los siguientes comandos:
       - Actualiazar la lista de repositorios, Sistema Operativo, instalar dependencias, docker, agregar el usuario al grupo docker y reiniciar el equipo:
   ```shell
