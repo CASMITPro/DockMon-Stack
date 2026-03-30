@@ -120,6 +120,7 @@ CHAT_ID="Mi ID"
 ```
 3) Luego de trabajar en el paso #2, solo resta ejecutar el siguiente comando:
 ```shell
+chmod +x setup-tailscale-host.sh
 ./setup-tailscale-host.sh
 ```
 
