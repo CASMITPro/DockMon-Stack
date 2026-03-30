@@ -59,7 +59,7 @@ docker run hello-world
 ```
 ![image](https://github.com/TecnologyCASM/PiHoleUnbound-WG/assets/107158068/58f35f2b-9c35-4381-8186-8f37298e170a)
 
-# Descarga y Ejecucion del proyecto DockMon-Stack:
+### Descarga y Ejecucion del proyecto DockMon-Stack:
 1) Ejecutar el siguiente comando para solo descargar el proyecto `DockMon-Stack` y acceder a la carpeta del proyecto:
 ```shell
 git clone https://github.com/TecnologyCASM/DockMon-Stack.git
@@ -162,46 +162,5 @@ Este comando nos llevara a la siguente pantalla:
 
  Nota: Para que estos ajustes se apliquen debemos presionar `Finish` y este solicitara un reinicio del equipo.
  
-# Proceso Actualiacion OS, Instalacion de Docker y agregar usuario a grupo docker: 
-1) Una vez la raspberry pi halla iniciado, procederemos a aplicar los siguientes comandos:
-      - Actualiazar la lista de repositorios, Sistema Operativo, instalar dependencias, docker, agregar el usuario al grupo docker y reiniciar el equipo:
-  ```shell
-sudo apt update && sudo apt-get full-upgrade -y \
-     apt-transport-https \
-     ca-certificates \
-     curl \
-     gnupg2 \
-     software-properties-common \
-     vim \
-     fail2ban \
-     ntfs-3g &&
-sudo curl -fsSL https://get.docker.com/ -o get-docker.sh && sudo sh get-docker.sh &&
-sudo usermod -aG docker ${USER} && sudo rm -r get-docker.sh &&
-sudo reboot
-```
-2) Una vez la raspberry pi halla iniciado y para validar que el servicio de docker esta instalado, procederemos a descargar un contenedor de prueba llamado `Helo-Wold`:
-```shell
-docker run hello-world
-```
-![image](https://github.com/TecnologyCASM/PiHoleUnbound-WG/assets/107158068/58f35f2b-9c35-4381-8186-8f37298e170a)
-
-# Descarga y Ejecucion del proyecto DockMon-Stack:
-1) Ejecutar el siguiente comando para solo descargar el proyecto `DockMon-Stack` y acceder a la carpeta del proyecto:
-```shell
-git clone https://github.com/TecnologyCASM/DockMon-Stack.git
-cd DockMon-Stack
-ls -la
-```
-2) Debe de ir al archivo `.env` y modificar los siguientes parametros:
-```shell
-# Variables de entorno para Docker Controller Bot
-BOT_TOKEN="Mi Token"
-CHAT_ID="Mi ID"
-```
-3) Luego de trabajar en el paso #2, solo resta ejecutar el siguiente comando:
-```shell
-docker compose up -d && docker ps
-```
-
 MUCHAS GRACIAS POR UTILIZAR MI APORTE A LA COMUNIDAD...
 
