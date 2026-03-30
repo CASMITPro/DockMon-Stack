@@ -29,14 +29,14 @@ Infraestructura ligera y potente para gestión de contenedores, DNS centralizado
 
 Este proyecto esta diseñado con la finalidad de utilizarse en una red domestica, utilizando una Raspberry Pi B 8GB con dispositivo, donde contamos con la configuracion de dos servicios de administracion de contenedores de docker como Portainer y Docker Controller.
 
-# Prerequisitos:
+### Prerequisitos:
 * `Raspberry Pi 4 Modelo B 2GB`. https://amzn.to/3K7diXR
 * `64GB tarjeta MicroSD`. https://amzn.to/3ynPiNz
 * `Lector de tarjetas SD USB`. https://amzn.to/3wGN8bs
 
 Nota: Dicho esto, este proceso debería funcionar en cualquier Raspberry Pi.
 
-# Instalacion de Sistema Operativo en Raspberry Pi:
+### Instalacion de Sistema Operativo en Raspberry Pi:
 1) Descarga la aplicacion "[RaspberryOS](https://www.raspberrypi.com/software/)" de la pagina oficial.
 2) Conecta a la PC el lector SD con la memoria micro y segue los pasos como se muestra en la imagen mas abajo.
 3) Elige el sistema operativo recomendado por raspberry.
@@ -75,7 +75,6 @@ Este comando nos llevara a la siguente pantalla:
   *  `6-Advanced Options=>Expand FileSystem`: Opcion para expandir por completo el almaceniamiento de la SD de la raspberry.
 
  Nota: Para que estos ajustes se apliquen debemos presionar `Finish` y este solicitara un reinicio del equipo.
-
 
 * Docker
 * Docker Compose
