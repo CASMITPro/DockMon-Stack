@@ -1,41 +1,48 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Iniciando despliegue de DockMon-Stack..."
+echo "🚀 Iniciando setup completo del host + DockMon-Stack..."
 
-# 1. Instalar Tailscale si no está presente
-if ! command -v tailscale &> /dev/null; then
-  echo "📦 Instalando Tailscale en el host..."
-  curl -fsSL https://tailscale.com/install.sh | sh
+# 📦 Cargar variables
+ENV_FILE="$(dirname "$0")/.env"
+if [ -f "$ENV_FILE" ]; then
+  source "$ENV_FILE"
 else
-  echo "✅ Tailscale ya está instalado."
+  echo "❌ Archivo .env no encontrado"
+  exit 1
 fi
 
-# 2. Cargar variables desde .env
-source "$(dirname "$0")/.env"
+# 1. Instalar Tailscale si no está
+if ! command -v tailscale &> /dev/null; then
+  echo "📦 Instalando Tailscale..."
+  curl -fsSL https://tailscale.com/install.sh | sh
+else
+  echo "✅ Tailscale ya instalado"
+fi
 
-# 3. Activar IP forwarding
+# 2. Activar IP forwarding
 echo "🔧 Activando IP forwarding..."
 sudo sysctl -w net.ipv4.ip_forward=1
 sudo sysctl -w net.ipv6.conf.all.forwarding=1
 
-# 4. Optimización de red (opcional pero pro)
-echo "⚙️ Aplicando optimización UDP GRO..."
+# 3. Optimizar red
+echo "⚙️ Optimizando interfaz de red..."
 NETDEV=$(ip -o route get 8.8.8.8 | awk '{print $5}')
 sudo ethtool -K "$NETDEV" rx-udp-gro-forwarding on rx-gro-list off || true
 
-# 5. Levantar Tailscale (IMPORTANTE)
-echo "🔐 Registrando homelab en Tailscale..."
+# 4. Levantar Tailscale
+echo "🔐 Configurando Tailscale..."
 sudo tailscale up \
   --authkey="${TS_AUTHKEY}" \
-  --accept-dns=false \
   --advertise-routes=192.168.1.0/24 \
-  --advertise-exit-node
+  --advertise-exit-node \
+  --accept-dns=false
 
-echo "✅ Tailscale configurado correctamente."
-
-# 6. Levantar contenedores
-echo "🐳 Levantando contenedores Docker..."
+# 5. Levantar Docker Compose
+echo "🐳 Levantando contenedores..."
 docker compose up -d
 
-echo "🎉 DockMon-Stack desplegado correctamente."
+echo ""
+echo "🎉 TODO LISTO"
+echo "🌐 DNS: http://localhost:5380"
+echo "🛠️ Portainer: http://localhost:9000"
