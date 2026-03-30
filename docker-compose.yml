@@ -1,35 +1,64 @@
+version: "3.9"
 services:
-  # 🛠️ Portainer: Panel web para administrar contenedores Docker
-  portainer:
-    image: portainer/portainer-ce:latest         # Última versión de Portainer CE
-    container_name: portainer                    # Nombre del contenedor
-    hostname: portainer                          # Nombre de host interno
-    network_mode: bridge                         # Usa red bridge por defecto
-    security_opt:
-      - no-new-privileges:true                   # Previene escalamiento de privilegios
-    environment:
-      TZ: ${TZ}                                  # Zona horaria definida en .env
-    volumes:
-      - /etc/localtime:/etc/localtime:ro         # Sincroniza hora del host
-      - /var/run/docker.sock:/var/run/docker.sock:ro # Permite a Portainer acceder al daemon Docker
-      - ./portainer-data:/data                   # Persistencia de datos de Portainer
-    ports:
-      - "9000:9000"                               # Acceso al panel web en http://localhost:9000
-    restart: unless-stopped                      # Reinicia salvo que se detenga manualmente
 
-  # 🤖 Controller-Bot: Bot de Telegram para monitoreo y control de contenedores
-  docker-controller-bot:
-    image: dgongut/docker-controller-bot:latest  # Imagen oficial del bot
-    container_name: controller-bot               # Nombre del contenedor
-    network_mode: host                           # Accede directamente a la red del host
-    tty: true                                     # Habilita terminal interactiva
+  # 🛠️ Portainer - Administración Docker
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: 🛠️-portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "9000:9000"
     environment:
-      TZ: ${TZ}                                   # Zona horaria
-      CONTAINER_NAME: controller-bot              # Nombre lógico del bot
-      TELEGRAM_TOKEN: ${BOT_TOKEN}                # Token del bot (definido en .env)
-      TELEGRAM_ADMIN: ${CHAT_ID}                  # ID del administrador que recibe alertas
-      CHECK_UPDATE_EVERY_HOURS: 720               # Verifica actualizaciones cada 30 días
+      - TZ=${TZ}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock # Acceso al daemon Docker para monitoreo
-      - ./config:/app/schedule                    # Configuración de tareas programadas
-    restart: always                               # Reinicia automáticamente ante fallos
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - portainer_data:/data
+    networks:
+      - dockmon
+
+  # 🤖 Controller Bot - Telegram
+  controller-bot:
+    image: dgongut/docker-controller-bot:latest
+    container_name: 🤖-controller-bot
+    restart: always
+    tty: true
+    environment:
+      - TZ=${TZ}
+      - CONTAINER_NAME=controller-bot
+      - TELEGRAM_TOKEN=${BOT_TOKEN}
+      - TELEGRAM_ADMIN=${CHAT_ID}
+      - CHECK_UPDATE_EVERY_HOURS=72
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config:/config
+    networks:
+      - dockmon
+
+  # 🌐 Technitium DNS - Servidor DNS
+  technitium-dns:
+    image: technitium/dns-server:latest
+    container_name: 🌐-technitium-dns
+    restart: unless-stopped
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+      - "127.0.0.1:5380:5380"
+    environment:
+      - DNS_SERVER_DOMAIN=home
+      - DNS_SERVER_ADMIN_PASSWORD=${DNS_ADMIN_PASSWORD}
+      - TZ=${TZ}
+    volumes:
+      - ./technitium/data:/etc/dns
+    networks:
+      - dockmon
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  portainer_data:
+networks:
+  dockmon:
+    driver: bridge
