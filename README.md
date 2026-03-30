@@ -120,7 +120,7 @@ CHAT_ID="Mi ID"
 ```
 3) Luego de trabajar en el paso #2, solo resta ejecutar el siguiente comando:
 ```shell
-./setup-tailscale-host.sh && docker compose up -d && docker ps
+./setup-tailscale-host.sh
 ```
 
 
