@@ -174,7 +174,3 @@ Pull requests son bienvenidos.
 ## 📜 Licencia
 
 MIT
-
-
-MUCHAS GRACIAS POR UTILIZAR MI APORTE A LA COMUNIDAD...
-
