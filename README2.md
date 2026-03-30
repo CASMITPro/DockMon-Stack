@@ -76,15 +76,9 @@ Este comando nos llevara a la siguente pantalla:
 
  Nota: Para que estos ajustes se apliquen debemos presionar `Finish` y este solicitara un reinicio del equipo.
 
-* Docker
-* Docker Compose
-* Acceso a internet
-* (Opcional) Cuenta de Telegram para el bot
-
 ---
 
 ## ⚙️ Instalación
-
 ### Proceso Actualiacion OS, Instalacion de Docker y agregar usuario a grupo docker: 
 1) Una vez la raspberry pi halla iniciado, procederemos a aplicar los siguientes comandos:
       - Actualiazar la lista de repositorios, Sistema Operativo, instalar dependencias, docker, agregar el usuario al grupo docker y reiniciar el equipo:
