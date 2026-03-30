@@ -11,7 +11,7 @@ Infraestructura ligera y potente para gestión de contenedores, DNS centralizado
 * 🤖 Bot de Telegram para monitoreo de contenedores
 * 🔒 Buenas prácticas de seguridad (no-new-privileges)
 * 📦 Persistencia de datos
-* 🔗 Integración con VPN (Tailscale-ready)
+* 🔗 Integración con VPN mediante Tailscale (instalado vía script externo)
 
 ---
 
