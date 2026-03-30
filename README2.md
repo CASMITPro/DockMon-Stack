@@ -97,32 +97,9 @@ docker compose up -d
     └──────────┴──────────┘
 ```
 
----
+Este proyecto esta diseñado con la finalidad de utilizarse en una red domestica, utilizando una Raspberry Pi B 8GB con dispositivo, donde contamos con la configuracion de dos servicios de administracion de contenedores de docker como Portainer y Docker Controller.
 
-## 🔧 Personalización
-
-Puedes agregar:
-
-* Bloqueo de anuncios (listas DNS)
-* Dominios internos (ej: `home.lab`)
-* Integración con reverse proxy (NGINX / Traefik)
-
----
-
-## 📌 Próximos pasos
-
-* 🔒 HTTPS interno
-* 🚫 Bloqueo de ads y malware
-* 🌍 Acceso remoto seguro con VPN
-
----
-
-## 🤝 Contribuciones
-
-Pull requests son bienvenidos.
-
----
-
-## 📜 Licencia
-
-MIT
+# Prerequisitos:
+* `Raspberry Pi 4 Modelo B 2GB`. https://amzn.to/3K7diXR
+* `64GB tarjeta MicroSD`. https://amzn.to/3ynPiNz
+* `Lector de tarjetas SD USB`. https://amzn.to/3wGN8bs
